@@ -1,0 +1,6 @@
+@inproceedings{spimsyn2026,
+ title={Direct Speech-to-Image Synthesis via Cross-Modal Latent Transformers},
+ author={Adhithyaa Natarajan and Balamurugan Palaniappan},
+ booktitle={Proceedings of the 35th ACM International Conference on Multimedia},
+ year={2026}
+}
