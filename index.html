@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Direct Speech-to-Image Synthesis</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<section class="hero text-center py-5">
+<div class="container">
+<span class="badge bg-primary">ACM MM 2026</span>
+<h1 class="display-4 fw-bold mt-3">Direct Speech-to-Image Synthesis via<br>Cross-Modal Latent Transformers</h1>
+<p class="lead">Generate Images Directly from Human Speech</p>
+
+<!-- Authors -->
+<p class="authors mt-4">
+    <strong>Adhithyaa Natarajan</strong>,
+    <strong>Balamurugan Palaniappan</strong>
+</p>
+
+<!-- Affiliation -->
+<p class="affiliation">
+    Department of Industrial Engineering and Operations Research<br>
+    Indian Institute of Technology Bombay, Mumbai, India<br> <br>
+    Accepted at 35th ACM International Conference on Multimedia (ACM MM 2026)
+
+</p>
+
+
+<div class="mt-4">
+    <a href="https://doi.org/10.1145/3767308.3835860"
+       class="btn btn-primary m-2"
+       target="_blank"
+       rel="noopener noreferrer">
+        <i class="fas fa-file-pdf"></i> Paper
+    </a>
+
+    <a class="btn btn-outline-primary m-2">
+        <i class="fab fa-github"></i> Code (Coming Soon)
+    </a>
+
+    <a class="btn btn-outline-primary m-2">
+        <i class="fas fa-quote-right"></i> BibTeX (Coming Soon)
+    </a>
+</div>
+<!-- ===================== Teaser Image ===================== -->
+<div class="mt-5 text-center">
+
+    <img src="assets/images/Fig_1_Problem_Definition.jpg"
+         alt="SPIMSyn Teaser"
+         class="img-fluid shadow-lg rounded-4 teaser-img">
+
+    <p class="mt-3 text-muted">
+        <strong></strong> Direct Speech-to-Image Synthesis framework.
+    </p>
+
+</div>
+
+</div></section>
+
+
+
+<!-- ===================== Abstract ===================== -->
+<section id="abstract" class="container py-5">
+
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">Abstract</h2>
+        </div>
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-10">
+
+            <div class="abstract-card">
+
+                <p>
+                    Generating images directly from spoken language without
+                    intermediate text transcription remains a fundamental
+                    challenge in cross-modal perception. Existing approaches
+                    cascade Automatic Speech Recognition (ASR) with
+                    Text-to-Image (T2I) models, introducing compounding
+                    transcription errors and latency that may degrade image
+                    quality. We eliminate this bottleneck by proposing
+                    <strong>SPIMSyn</strong> and
+                    <strong>SPIMSyn-D</strong>, two
+                    <strong>SP</strong>eech to
+                    <strong>IM</strong>age
+                    <strong>Syn</strong>thesis frameworks that adapt
+                    <strong>Stable Diffusion&nbsp;3.5</strong> for direct
+                    Speech-to-Image (S2I) generation. A novel
+                    <strong>3-Branch Transformer Decoder</strong> predicts
+                    conditioning embeddings corresponding to the three text
+                    encoders of Stable Diffusion 3.5:
+                    <strong>CLIP-L</strong>,
+                    <strong>CLIP-G</strong>, and
+                    <strong>T5-XXL</strong>.
+                </p>
+
+                <p>
+                    To obtain speech representations,
+                    <strong>SPIMSyn</strong> employs a pretrained
+                    <strong>Whisper Encoder</strong>, while
+                    <strong>SPIMSyn-D</strong> uses training-free discrete
+                    mel-filterbank tokenization through
+                    <strong>dMel</strong>. Extensive experiments demonstrate that both SPIMSyn and
+                    SPIMSyn-D eliminate explicit ASR decoding, thereby reducing
+                    cascading errors, improving image generation fidelity, and
+                    achieving lower end-to-end latency compared with
+                    conventional cascaded Speech-to-Image pipelines.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ===================== Method ===================== -->
+<section id="method" class="container py-5">
+
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">Architecture</h2>
+        <p class="text-muted">
+            Overview of the proposed SPIMSyn and SPIMSyn-D frameworks for
+            direct speech-to-image synthesis.
+        </p>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-12 text-center">
+
+            <img src="assets/images/Fig_2_Over_All_Diagram1.jpg"
+                 alt="SPIMSyn Architecture"
+                 class="img-fluid shadow-lg rounded-4 architecture-img">
+
+            <div class="figure-caption mt-4">
+
+                <b>A)</b> Proposed 3-Branch Transformer Decoder Architecture.
+
+                <b>B)</b> Frozen Stable Diffusion 3.5 (Medium).
+
+                <b>C)</b> Decoder Block Components consisting of self-attention,
+                followed by cross-attention and an MLP with residual connections.
+
+                <b>D)</b> Loss components used in the proposed 3-Branch
+                Transformer Decoder.
+
+                <b>E)</b> Computation of Centroids. Text captions are encoded into
+                embeddings, clustered using K-means, and the resulting cluster
+                centroids are stored and used as the ground truth for
+                cross-entropy and contrastive losses.
+
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+
+
+
+<!-- ===================== Results ===================== -->
+<section id="results" class="container py-5">
+
+    <h2 class="text-center mb-5">Experimental Results</h2>
+
+    <p class="text-center lead mb-5">
+        We evaluate our proposed <strong>SPIMSyn</strong> and
+        <strong>SPIMSyn-D</strong> on synthesized and real-world speech
+        datasets to demonstrate direct speech-to-image generation
+        without intermediate ASR transcription.
+    </p>
+
+    <!-- ====================================================== -->
+    <!-- Synthesized LAION-5B -->
+    <!-- ====================================================== -->
+
+    <div class="result-section">
+
+        <h3>Synthesized LAION-5B</h3>
+
+        <p>
+            We first evaluate our framework on a synthesized speech version
+            of the LAION-5B dataset. Compared with cascaded Speech-to-Image
+            baselines, SPIMSyn and SPIMSyn-D generate images that more
+            faithfully preserve the semantic content of the spoken input
+            while avoiding transcription errors introduced by Automatic
+            Speech Recognition (ASR).
+        </p>
+
+        <img src="assets/images/Fig_3_Qualitative_Output_Our_Synthesized_Dataset2.jpg"
+             class="results-image"
+             alt="Synthesized LAION-5B">
+
+    </div>
+
+    <!-- ====================================================== -->
+    <!-- Spoken COCO -->
+    <!-- ====================================================== -->
+
+    <div class="result-section">
+
+        <h3>Spoken COCO</h3>
+
+        <p>
+            We further evaluate the proposed framework on the Spoken COCO
+            dataset containing natural human speech. Although
+            trained on synthesized speech, SPIMSyn and SPIMSyn-D generalize
+            effectively to real spoken descriptions without additional
+            fine-tuning.
+        </p>
+
+        <img src="assets/images/grid_spokencoco.jpg"
+             class="results-image"
+             alt="Spoken COCO">
+
+    </div>
+
+    <!-- ====================================================== -->
+    <!-- FLEURS -->
+    <!-- ====================================================== -->
+
+    <div class="result-section">
+
+        <h3>FLEURS</h3>
+
+        <p>
+            To evaluate robustness on long and complex spoken descriptions,
+            we conduct experiments on FLEURS benchmark.
+            SPIMSyn and SPIMSyn-D accurately capture semantic information
+            even for lengthy speech inputs.
+        </p>
+
+        <img src="assets/images/grid_fleurs.jpg"
+             class="results-image"
+             alt="FLEURS">
+
+
+    </div>
+
+    <!-- ====================================================== -->
+    <!-- Common Voice -->
+    <!-- ====================================================== -->
+
+    <div class="result-section">
+
+        <h3>Common Voice</h3>
+
+        <p>
+            We evaluate our approach on Common Voice dataset containing
+            diverse speakers recorded under different acoustic conditions such as speech in board room meetings and in other environments.
+            The proposed framework demonstrates strong robustness across
+            speaker variability while maintaining semantic fidelity.
+        </p>
+
+        <img src="assets/images/grid_commonvoice.jpg"
+             class="results-image"
+             alt="Common Voice">
+
+    <!-- ====================================================== -->
+    <!-- librispeech -->
+    <!-- ====================================================== -->
+
+<div class="result-section">
+
+    <h3>LibriSpeech Generalization</h3>
+
+    <p>
+        To evaluate robustness on unconstrained spoken language,
+        we conduct experiments on the LibriSpeech benchmark.
+        The proposed SPIMSyn and SPIMSyn-D frameworks generate
+        meaningful images directly from long-form
+        speech without relying on intermediate Automatic Speech
+        Recognition. These results demonstrate strong
+        generalization beyond the synthesized training corpus.
+    </p>
+
+    <img src="assets/images/Librispeech_grid_comparison2.jpg"
+         class="results-image"
+         alt="LibriSpeech Results">
+
+
+</div>
+
+
+    </div>
+
+    <!-- ====================================================== -->
+    <!-- Accent Robustness -->
+    <!-- ====================================================== -->
+
+    <div class="result-section">
+
+        <h3>Accent Robustness</h3>
+
+        <p>
+            We evaluate the proposed framework across multiple
+            English accents including American, British, Indian, German,
+            French, Chinese, and Japanese speakers. SPIMSyn and SPIMSyn-D
+            consistently generate meaningful images irrespective to accent variations.
+        </p>
+
+        <img src="assets/images/Fig_5_Accent_Comparison.jpg"
+             class="results-image"
+             alt="Accent Robustness">
+    </div>
+
+    <!-- ====================================================== -->
+    <!-- Prosody Robustness -->
+    <!-- ====================================================== -->
+
+<div class="result-section">
+
+    <h3>Prosody Robustness</h3>
+
+    <p>
+        We investigate whether variations in speaking style,
+        including neutral, happy, angry, sad, and whispered
+        speech, influence the generated images.
+    </p>
+
+    <img src="assets/images/prosody_grid_caption_0004_20260328_122108.jpg"
+         class="results-image"
+         alt="Prosody Results">
+
+</div>
+
+    <!-- ====================================================== -->
+    <!-- Paralinguistic Results -->
+    <!-- ====================================================== -->
+
+<div class="result-section">
+
+    <h3>Paralinguistic Speech Understanding</h3>
+
+    <p>
+        Beyond spoken words, human speech often contains
+        paralinguistic cues such as laughter, sighs, and
+        non-verbal vocalizations. We evaluate whether these
+        signals influence the generated images. The proposed
+        framework demonstrates robustness to such acoustic
+        variations of the spoken content.
+    </p>
+
+    <img src="assets/images/laughter_and_sigh_grid_20260404_123957.jpg"
+         class="results-image"
+         alt="Paralinguistic Results">
+
+</div>
+
+    <!-- ====================================================== -->
+    <!-- Extension to Speech-to-Video Generation -->
+    <!-- ====================================================== -->
+
+<div class="result-section">
+
+    <h3>Extension to Speech-to-Video Generation</h3>
+
+    <p>
+        Although our framework is trained for direct
+        Speech-to-Image generation, the predicted multimodal
+        conditioning embeddings can also be integrated into
+        modern diffusion-based video generation models. The
+        following examples demonstrate preliminary results,
+        illustrating the potential of extending toward
+        direct Speech-to-Video synthesis.
+    </p>
+
+    <div class="row">
+
+        <div class="col-lg-4">
+
+            <div class="video-card">
+
+                <h5>Whisper + SD Baseline</h5>
+
+                <video controls class="w-100 rounded shadow">
+
+                    <source src="assets/videos/Whisper-based Baseline.mp4"
+                            type="video/mp4">
+
+                </video>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-4">
+
+            <div class="video-card">
+
+                <h5>Proposed SPIMSyn</h5>
+
+                <video controls class="w-100 rounded shadow">
+
+                    <source src="assets/videos/Proposed SPIMSyn.mp4"
+                            type="video/mp4">
+
+                </video>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-4">
+
+            <div class="video-card">
+
+                <h5>Proposed SPIMSyn-D</h5>
+
+                <video controls class="w-100 rounded shadow">
+
+                    <source src="assets/videos/Proposed SPIMSyn-D.mp4"
+                            type="video/mp4">
+
+                </video>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</section>
+<section id="citation" class="container py-5"><h2>Citation</h2><pre>@article{coming soon}</pre></section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+</body></html>

@@ -1,0 +1,1 @@
+console.log('SPIMSyn project page loaded');

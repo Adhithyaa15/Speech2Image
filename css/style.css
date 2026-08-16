@@ -1,0 +1,294 @@
+body{font-family:Arial,sans-serif;background:#f8fafc}.hero{padding:90px 0;background:linear-gradient(135deg,#eef5ff,#fff)}.placeholder{height:350px;border:2px dashed #bbb;display:flex;align-items:center;justify-content:center;border-radius:16px;background:white}section{scroll-margin-top:80px}
+
+/* ===============================
+   Teaser Image
+==================================*/
+
+.teaser-img{
+    width:50%;
+    max-width:700px;
+    height:auto;
+    border-radius:20px;
+    transition:0.4s ease;
+}
+
+.teaser-img:hover{
+    transform:translateY(-6px);
+    box-shadow:0 18px 45px rgba(0,0,0,0.18);
+}
+
+
+
+/*====================================
+ Architecture Section
+====================================*/
+
+#method{
+    padding-top:80px;
+    padding-bottom:80px;
+}
+
+#method h2{
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.architecture-img{
+
+    width:95%;
+    max-width:1100px;
+    height:auto;
+
+    border-radius:18px;
+
+    transition:0.4s ease;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.15);
+
+}
+
+.architecture-img:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.25);
+
+}
+
+.figure-caption{
+
+    max-width:1150px;
+
+    margin:auto;
+
+    margin-top:20px;
+
+    color:#555;
+
+    font-size:16px;
+
+    line-height:1.8;
+
+    text-align:justify;
+
+    background:#ffffff;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    border-left:5px solid #2563EB;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+}
+
+
+
+
+/*====================================
+ Abstract
+====================================*/
+
+#abstract{
+
+    padding-top:80px;
+    padding-bottom:80px;
+
+}
+
+.abstract-card{
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    padding:40px;
+
+    box-shadow:0 10px 35px rgba(0,0,0,.08);
+
+    border-left:6px solid #2563EB;
+
+}
+
+.abstract-card p{
+
+    text-align:justify;
+
+    font-size:18px;
+
+    line-height:1.9;
+
+    color:#444;
+
+    margin-bottom:22px;
+
+}
+
+.abstract-card strong{
+
+    color:#2563EB;
+
+}
+
+
+
+/*====================================
+        Experimental Results
+====================================*/
+
+#results{
+
+    padding-top:80px;
+    padding-bottom:80px;
+
+}
+
+#results h2{
+
+    font-size:42px;
+    font-weight:700;
+
+    margin-bottom:25px;
+
+}
+
+#results .lead{
+
+    max-width:900px;
+
+    margin:auto;
+
+    color:#555;
+
+    font-size:20px;
+
+    line-height:1.8;
+
+}
+
+.result-section{
+
+    margin-top:80px;
+
+}
+
+.result-section h3{
+
+    font-size:34px;
+
+    color:#2563EB;
+
+    font-weight:700;
+
+    margin-bottom:20px;
+
+}
+
+.result-section p{
+
+    font-size:18px;
+
+    line-height:1.9;
+
+    color:#555;
+
+    text-align:justify;
+
+    margin-bottom:30px;
+
+}
+
+.results-image{
+
+    width:100%;
+
+    border-radius:18px;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.15);
+
+    transition:.4s;
+
+}
+
+.results-image:hover{
+
+    transform:scale(1.01);
+
+}
+
+.figure-caption{
+
+    max-width:1100px;
+
+    margin:25px auto 0;
+
+    background:#fff;
+
+    padding:20px;
+
+    border-left:5px solid #2563EB;
+
+    border-radius:12px;
+
+    color:#555;
+
+    font-size:17px;
+
+    line-height:1.8;
+
+    text-align:justify;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+}
+
+.video-card{
+
+    background:#fff;
+
+    border-radius:15px;
+
+    padding:18px;
+
+    margin-top:20px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+.video-card h5{
+
+    text-align:center;
+
+    margin-bottom:15px;
+
+    color:#2563EB;
+
+    font-weight:600;
+
+}
+
+
+/*====================================
+ Conference Badge
+====================================*/
+
+.conference-badge{
+
+    margin-top:15px;
+    margin-bottom:25px;
+
+}
+
+.conference-badge .badge{
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    letter-spacing:0.3px;
+
+    padding:12px 24px;
+
+}
