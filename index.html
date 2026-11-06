@@ -46,8 +46,25 @@
         <i class="fab fa-github"></i> Code
     </a>
 
-    <a class="btn btn-outline-primary m-2">
-        <i class="fas fa-quote-right"></i> BibTeX (Coming Soon)
+    <a href="#"
+       class="btn btn-outline-primary m-2"
+       onclick="navigator.clipboard.writeText(`@inproceedings{10.1145/3767308.3835860,
+        author = {Natarajan, Adhithyaa and Palaniappan, Balamurugan},
+        title = {Direct Speech-to-Image Synthesis via Cross-Modal Latent Transformers},
+        year = {2026},
+        isbn = {9798400722134},
+        publisher = {Association for Computing Machinery},
+        address = {New York, NY, USA},
+        url = {https://doi.org/10.1145/3767308.3835860},
+        doi = {10.1145/3767308.3835860},
+        booktitle = {Proceedings of the 34th ACM International Conference on Multimedia},
+        pages = {7826–7835},
+        numpages = {10},
+        keywords = {speech to image generation, text to image generation, stable diffusion, multimodal learning, latent transformer},
+        location = {Rio de Janeiro, Brazil},
+        series = {MM '26}
+        }`).then(() => alert('BibTeX copied to clipboard!')); return false;">
+        <i class="fas fa-quote-right"></i> BibTeX
     </a>
 </div>
 <!-- ===================== Teaser Image ===================== -->
